@@ -33,26 +33,20 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   const loadBlockchainData = async () => {
-    // Initiate provider
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     setProvider(provider);
 
-    // Detect the current network
-    const networkId = await provider
-      .getNetwork()
-      .then((network) => network.chainId);
+    // Fetch Chain Id
+    const { chainId } = await provider.getNetwork();
+    console.log(chainId);
 
-    // Select the configuration based on the detected network
-    const nftConfig = config[networkId]?.nft;
-
-    if (nftConfig) {
-      const nft = new ethers.Contract(nftConfig.address, NFT_ABI, provider);
-      setNFT(nft);
-    } else {
-      window.alert("NFT contract not deployed to the detected network.");
-      return;
-    }
-
+    // Initiate contract
+    const nft = new ethers.Contract(
+      config[chainId].nft.address,
+      NFT_ABI,
+      provider
+    );
+    setNFT(nft);
     // Fetch accounts
     const accounts = await window.ethereum.request({
       method: "eth_requestAccounts",
