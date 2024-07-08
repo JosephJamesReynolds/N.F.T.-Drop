@@ -10,7 +10,7 @@ async function main() {
   const NAME = "Joe Punks";
   const SYMBOL = "JP";
   const COST = ethers.utils.parseUnits("0.001", "ether");
-  const MAX_SUPPLY = 25;
+  const MAX_SUPPLY = 300;
   const NFT_MINT_DATE = (Date.now() + 6000).toString().slice(0, 10);
   const IPFT_METADATA_URI =
     "ipfs://QmQ2jnDYecFhrf3asEWjyjZRX1pZSsNWG3qHzmNDvXa9qg/";

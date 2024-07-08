@@ -11,7 +11,7 @@ describe("NFT", () => {
   const NAME = "Joe Punks";
   const SYMBOL = "JP";
   const COST = ether(0.001);
-  const MAX_SUPPLY = 25;
+  const MAX_SUPPLY = 300;
   const BASE_URI = "ipfs://QmQ2jnDYecFhrf3asEWjyjZRX1pZSsNWG3qHzmNDvXa9qg/";
 
   let nft, deployer, minter;
@@ -181,8 +181,8 @@ describe("NFT", () => {
           BASE_URI
         );
 
-        await expect(nft.connect(minter).mint(100, { value: COST })).to.be
-          .reverted;
+        await expect(nft.connect(minter).mint(301, { value: COST.mul(301) })).to
+          .be.reverted;
       });
 
       it("does not return URIs for invalid tokens", async () => {
