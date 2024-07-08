@@ -12,7 +12,9 @@ const Navigation = ({ account }) => {
         height="40"
         className="d-inline-block align-top mx-3"
       />
-      <Navbar.Brand href="#">Joe Punks</Navbar.Brand>
+      <Navbar.Brand href="#" style={{ fontSize: "36px" }}>
+        Joseph's NFT Mints
+      </Navbar.Brand>{" "}
       <Navbar.Collapse className="justify-content-end">
         <Navbar.Text>{account}</Navbar.Text>
       </Navbar.Collapse>

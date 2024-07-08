@@ -10,7 +10,7 @@ const ether = tokens;
 describe("NFT", () => {
   const NAME = "Joe Punks";
   const SYMBOL = "JP";
-  const COST = ether(10);
+  const COST = ether(0.001);
   const MAX_SUPPLY = 25;
   const BASE_URI = "ipfs://QmQ2jnDYecFhrf3asEWjyjZRX1pZSsNWG3qHzmNDvXa9qg/";
 
@@ -130,8 +130,8 @@ describe("NFT", () => {
           BASE_URI
         );
 
-        await expect(nft.connect(minter).mint(1, { value: ether(1) })).to.be
-          .reverted;
+        await expect(nft.connect(minter).mint(1, { value: ether(0.0009) })).to
+          .be.reverted;
       });
 
       it("requires at least 1 nft to be minted", async () => {
@@ -146,8 +146,8 @@ describe("NFT", () => {
           BASE_URI
         );
 
-        await expect(nft.connect(minter).mint(0, { value: COST })).to.be
-          .reverted;
+        await expect(nft.connect(minter).mint(0, { value: ether(0.0009) })).to
+          .be.reverted;
       });
 
       it("rejects minting before allowed time", async () => {
@@ -220,7 +220,7 @@ describe("NFT", () => {
       );
 
       // Mint 3 nfts
-      transaction = await nft.connect(minter).mint(3, { value: ether(30) });
+      transaction = await nft.connect(minter).mint(3, { value: ether(0.003) });
       result = await transaction.wait();
     });
 

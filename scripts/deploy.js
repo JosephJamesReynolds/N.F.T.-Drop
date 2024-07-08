@@ -9,7 +9,7 @@ const hre = require("hardhat");
 async function main() {
   const NAME = "Joe Punks";
   const SYMBOL = "JP";
-  const COST = ethers.utils.parseUnits("10", "ether");
+  const COST = ethers.utils.parseUnits("0.001", "ether");
   const MAX_SUPPLY = 25;
   const NFT_MINT_DATE = (Date.now() + 6000).toString().slice(0, 10);
   const IPFT_METADATA_URI =
